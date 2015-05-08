@@ -7,4 +7,4 @@ if [ $? == 0 ]; then
 else
     echo "Something went wrong"
 fi
-#rm -r temp
+rm -r temp

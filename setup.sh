@@ -13,10 +13,8 @@ CLEANING=true
 # Required packages
 REQUIREMENTS="\
 binfmt-support \
-cmake \
 git \
 qemu-user-static \
-rsync \
 wget \
 "
 
