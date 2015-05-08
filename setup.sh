@@ -12,9 +12,9 @@ CLEANING=true
 
 # Required packages
 REQUIREMENTS="\
-binfmt-support \
+build-essential \
 git \
-qemu-user-static \
+openjdk-7-jre \
 wget \
 "
 
@@ -51,7 +51,7 @@ function delete_folder()
         rm -r -f $folder
         echo " DONE"
     else
-        error "Could delete. The folder $folder doesn't exist."
+        error "Could not delete. The folder $folder doesn't exist."
     fi
 }
 
@@ -63,7 +63,7 @@ function delete_file()
         rm -f $file
         echo " DONE"
     else
-        error "Could delete. The file $file doesn't exist."
+        error "Could not delete. The file $file doesn't exist."
     fi
 }
 
@@ -75,7 +75,7 @@ function delete_symlink()
         rm -f $symlink
         echo " DONE"
     else
-        error "Could delete. The symlink $symlink doesn't exist."
+        error "Could not delete. The symlink $symlink doesn't exist."
     fi
 }
 
