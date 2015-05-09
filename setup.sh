@@ -81,12 +81,6 @@ function delete_symlink()
 
 
 ##### Some checks #####
-# Check for root or sudo
-if [[ $EUID -ne 0 ]]; then
-    error "This script should be run using sudo or as the root user"
-    exit 1
-fi
-
 # Check architecture
 if [ $ARCHITECTURE != "x86_64" ]; then
     error "This script is only for the x86_64 architecture"
@@ -106,7 +100,7 @@ fi
 ##### Setup environment #####
 # Install requirements
 echo "Installing requirements ..."
-apt-get -s -q --show-progress install $REQUIREMENTS
+sudo apt-get -q --show-progress install $REQUIREMENTS
 echo " DONE"
 echo ""
 
