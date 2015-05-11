@@ -1,0 +1,3 @@
+#!/bin/bash
+export PATH=$PATH:"/home/jo/Dokumente/2015 - MRT-Environment/MRT-Environment-Setup/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
+./eclipse/eclipse -data workspace
