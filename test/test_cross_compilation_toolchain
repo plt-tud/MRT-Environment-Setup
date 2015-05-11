@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH=$PATH:"/home/jo/Dokumente/2015 - MRT-Environment/MRT-Environment-Setup/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
+export PATH=$PATH:"$PWD/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
 mkdir temp
 arm-linux-gnueabihf-g++ -o temp/test.bin res/test.cpp
 file temp/test.bin | grep 'ARM' &> /dev/null
