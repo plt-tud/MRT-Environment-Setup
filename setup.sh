@@ -51,7 +51,7 @@ function delete_folder()
         rm -r -f $folder
         echo " DONE"
     else
-        error "Could not delete. The folder $folder doesn't exist."
+        error "No need to delete. The folder $folder doesn't exist."
     fi
 }
 
@@ -63,7 +63,7 @@ function delete_file()
         rm -f $file
         echo " DONE"
     else
-        error "Could not delete. The file $file doesn't exist."
+        error "No need to delete. The file $file doesn't exist."
     fi
 }
 
@@ -75,7 +75,7 @@ function delete_symlink()
         rm -f $symlink
         echo " DONE"
     else
-        error "Could not delete. The symlink $symlink doesn't exist."
+        error "No need not delete. The symlink $symlink doesn't exist."
     fi
 }
 
