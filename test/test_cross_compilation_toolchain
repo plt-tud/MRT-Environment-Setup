@@ -1,10 +1,10 @@
 #!/bin/bash
 export PATH=$PATH:"/home/jo/Dokumente/2015 - MRT-Environment/MRT-Environment-Setup/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
 mkdir temp
-arm-linux-gnueabihf-cpp -o temp/test.bin res/test.cpp
+arm-linux-gnueabihf-g++ -o temp/test.bin res/test.cpp
 file temp/test.bin | grep 'ARM' &> /dev/null
 if [ $? == 0 ]; then
-    echo "Cross-compilation successful"
+    echo "C++ Cross-compilation for ARM successful"
 else
     echo "Something went wrong"
 fi
