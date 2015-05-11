@@ -1,0 +1,21 @@
+#!/bin/bash
+
+read -p "Would you really like to clean? (y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    rm -r -f eclipse
+    rm -r -f raspberrypi
+    echo " DONE"
+    echo ""
+fi
+
+
+read -p "Also remove 'workspace' directory? (y/N)" -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    rm -r -f eclipse
+    echo " DONE"
+    echo ""
+fi
