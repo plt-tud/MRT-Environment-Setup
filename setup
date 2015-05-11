@@ -129,4 +129,4 @@ echo " DONE"
 echo ""
 
 echo "+++++ INFO ++++"
-echo "Start Eclipse with the comman ./run-eclipse"
+echo "Start Eclipse with the command ./run-eclipse"
