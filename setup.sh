@@ -33,10 +33,6 @@ function info () {
  echo " Info: $@" ; 
 }
 
-function timestamp () {
- date --rfc-3339=seconds
-}
-
 function download()
 {
     local url=$1
@@ -47,43 +43,6 @@ function download()
     echo -ne "\b\b\b\b"
     echo " DONE"
 }
-
-function delete_folder()
-{
-    local folder=$1
-    echo "Deleting folder: $folder"
-    if [ -d $folder ]; then
-        rm -r -f $folder
-        echo " DONE"
-    else
-        error "No need to delete. The folder $folder doesn't exist."
-    fi
-}
-
-function delete_file()
-{
-    local file=$1
-    echo "Deleting file: $file"
-    if [ -d $file ]; then
-        rm -f $file
-        echo " DONE"
-    else
-        error "No need to delete. The file $file doesn't exist."
-    fi
-}
-
-function delete_symlink()
-{
-    local symlink=$1
-    echo "Deleting symlink: $symlink"
-    if [ -h $symlink ]; then
-        rm -f $symlink
-        echo " DONE"
-    else
-        error "No need not delete. The symlink $symlink doesn't exist."
-    fi
-}
-
 
 ##### Some checks #####
 # Check architecture
@@ -99,6 +58,9 @@ if ps ax | grep eclipse.equinox | grep -v grep | grep -v $0 > /dev/null; then
 fi
 
 ##### Setup environment #####
+# Set PATH variable
+export PATH=$PATH:"$PWD/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
+
 # Install requirements
 echo "Installing requirements ..."
 sudo apt-get -q --show-progress install $REQUIREMENTS
@@ -130,10 +92,6 @@ else
     git clone --depth=1 https://github.com/raspberrypi/tools.git raspberrypi/tools
     echo " DONE"
     echo ""
-    echo "Please add the following line to the end of ~/.bashrc"
-    echo "and type 'source ~/.bashrc' to activate it or restart the terminal window"
-    echo "export PATH=\$PATH:$PWD/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
-    echo ""
 fi
 
 # Create workspace
@@ -160,3 +118,6 @@ fi
 
 echo " DONE"
 echo ""
+
+echo "+++++ INFO ++++"
+echo "Start Eclipse with the comman ./run-eclipse"
