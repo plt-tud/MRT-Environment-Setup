@@ -77,7 +77,6 @@ else
     echo "Extracting eclipse ..."
     tar -xzf eclipse.tar.gz
     rm -f eclipse.tar.gz
-    ln -s ./eclipse/eclipse ./run-eclipse
     echo " DONE"
     echo ""
 fi
