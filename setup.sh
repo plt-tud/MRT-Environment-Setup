@@ -4,10 +4,12 @@
 # Author      : J. Pfeffer
 # License     : ??
 
+
 # Variables
+WORKSPACE_DIR="workspace"
 ARCHITECTURE=`uname -m`
 
-# Cleaning on/off
+# Cleaning (true/false)
 CLEANING=true
 
 # Required packages
@@ -18,14 +20,17 @@ openjdk-7-jre \
 wget \
 "
 
-# Eclipse
 # Eclipse package solution
 ECLIPSE_PACKAGE="http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR2/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz&r=1"
 
 # Functions
 
 function error () { 
- echo "Error: $@" ; 
+ echo " Error: $@" ; 
+}
+
+function info () { 
+ echo " Info: $@" ; 
 }
 
 function timestamp () {
@@ -87,14 +92,10 @@ if [ $ARCHITECTURE != "x86_64" ]; then
     exit 1
 fi
 
-##### Clean #####
-# This section undoes most of the changes made by the script
-if [ "$CLEANING" = true ]; then
-    echo "CLEANING"
-    delete_folder eclipse
-    delete_folder raspberrypi
-    delete_symlink run-eclipse
-echo ""
+# Check if Eclipse is running
+if ps ax | grep eclipse.equinox | grep -v grep | grep -v $0 > /dev/null; then
+    error "Eclipse is running! Please exit Eclipse!"
+    exit 1
 fi
 
 ##### Setup environment #####
@@ -105,21 +106,57 @@ echo " DONE"
 echo ""
 
 # Download eclipse
-echo "Downloading eclipse ..."
-download "$ECLIPSE_PACKAGE" eclipse.tar.gz
-echo "Extracting eclipse ..."
-tar -xzf eclipse.tar.gz
-rm -f eclipse.tar.gz
-ln -s ./eclipse/eclipse ./run-eclipse
-echo " DONE"
-echo ""
+if [ -d "eclipse" ]; then
+    info "The 'eclipse' folder already exists."
+    echo ""
+else
+    echo "Downloading eclipse ..."
+    download "$ECLIPSE_PACKAGE" eclipse.tar.gz
+    echo "Extracting eclipse ..."
+    tar -xzf eclipse.tar.gz
+    rm -f eclipse.tar.gz
+    ln -s ./eclipse/eclipse ./run-eclipse
+    echo " DONE"
+    echo ""
+fi
 
 # Raspberry Pi cross-compilation tool chain
-mkdir raspberrypi
-git clone --depth=1 https://github.com/raspberrypi/tools.git raspberrypi/tools
-echo ""
-echo "Please add the following line to the end of ~/.bashrc"
-echo "and type 'source ~/.bashrc' to activate it or restart the terminal window"
-echo "export PATH=\$PATH:$PWD/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
-echo ""
+if [ -d "raspberrypi" ]; then
+    info "The folder 'raspberrypi' already exists."
+    echo ""
+else
+    echo "Cloning the Raspberry Pi tools repository. This may take a while, it is big (~200MB download, ~1GB afterwards) ..."
+    mkdir raspberrypi
+    git clone --depth=1 https://github.com/raspberrypi/tools.git raspberrypi/tools
+    echo " DONE"
+    echo ""
+    echo "Please add the following line to the end of ~/.bashrc"
+    echo "and type 'source ~/.bashrc' to activate it or restart the terminal window"
+    echo "export PATH=\$PATH:$PWD/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
+    echo ""
+fi
 
+# Create workspace
+echo "Creating/updating MRT workspace ..."
+if [ ! -d $WORKSPACE_DIR ]; then
+    mkdir $WORKSPACE_DIR
+fi
+
+# Clone HelloCpp
+if [ ! -d "$WORKSPACE_DIR/HelloCpp" ]; then
+    git clone https://github.com/plt-tud/MRT-HelloCpp.git workspace/HelloCpp
+    eclipse/eclipse -nosplash -data workspace -application org.eclipse.cdt.managedbuilder.core.headlessbuild -import $WORKSPACE_DIR/HelloCpp
+else
+    git pull
+fi
+
+# Clone HelloAssembler
+if [ ! -d "$WORKSPACE_DIR/HelloAssembler" ]; then
+    git clone https://github.com/plt-tud/MRT-HelloAssembler.git workspace/HelloAssembler
+    eclipse/eclipse -nosplash -data workspace -application org.eclipse.cdt.managedbuilder.core.headlessbuild -import $WORKSPACE_DIR/HelloAssembler
+else
+    git pull
+fi
+
+echo " DONE"
+echo ""
