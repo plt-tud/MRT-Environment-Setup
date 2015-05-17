@@ -1,0 +1,15 @@
+#!/bin/bash
+export PATH=$PATH:"$PWD/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
+mkdir temp
+arm-linux-gnueabihf-as -o temp/test.o res/test.s
+arm-linux-gnueabihf-ld -s -o temp/test temp/test.o
+file temp/test | grep 'ARM' &> /dev/null
+if [ $? == 0 ]; then
+    echo "AS Cross-compilation for ARM successful"
+    rm -r temp
+    exit 0
+else
+    echo "Something went wrong"
+    rm -r temp
+    exit 1
+fi
