@@ -2,28 +2,43 @@
 
 # Version     : 0.1
 # Author      : J. Pfeffer
-# License     : ??
+# License     : GPL
 
 
-# Variables
+## Variables ##
 WORKSPACE_DIR="workspace"
 ARCHITECTURE=`uname -m`
 
 # Cleaning (true/false)
 CLEANING=true
 
-# Required packages
+# Required packages ##
+# Essential packages for builiding, java (for Eclipse) and wget to download resources
 REQUIREMENTS="\
 build-essential \
 git \
 openjdk-7-jre \
-wget \
-"
+wget"
 
-# Eclipse package solution
+# Libraries to install
+#REQUIREMENTS+=" libboost-all-dev"
+#REQUIREMENTS+=" libsfml-dev"
+
+# GitHub repos to clone and import into the workspace
+# For automatic import, the project name should be the same as the repository name
+# AS projects
+GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "MRT1-AS_00_Hallo" )
+
+# C projects
+GITHUB_REPOS=( "MRT1-C_00_Hallo" "MRT1-C_01_Datentypen" "MRT1-C_02_Identifier" "MRT1-C_03_Ausdruck" "MRT1-C_04_Flusskontrolle" "MRT1-C_05_Felder" "MRT1-C_06_Struct" "MRT1-C_07_Zeiger" "MRT1-C_08_Strukturzeiger" "MRT1-AS_00_Hallo" "MRT1-CPP_00_Hallo")
+
+# C++ projects
+GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "MRT1-CPP_00_Hallo")
+
+# Eclipse package solution to install
 ECLIPSE_PACKAGE="http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR2/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz&r=1"
 
-# Functions
+## Functions ##
 
 function error () { 
  echo " Error: $@" ; 
@@ -57,7 +72,7 @@ fi
 ##### Some checks #####
 # Check architecture
 if [ $ARCHITECTURE != "x86_64" ]; then
-    error "This script is only for the x86_64 architecture"
+    error "This script is only for the x86_64 architecture."
     exit 1
 fi
 
@@ -109,21 +124,17 @@ if [ ! -d $WORKSPACE_DIR ]; then
     mkdir $WORKSPACE_DIR
 fi
 
-# Clone HelloCpp
-if [ ! -d "$WORKSPACE_DIR/HelloCpp" ]; then
-    git clone https://github.com/plt-tud/MRT-HelloCpp.git workspace/HelloCpp
-    eclipse/eclipse -nosplash -data workspace -application org.eclipse.cdt.managedbuilder.core.headlessbuild -import $WORKSPACE_DIR/HelloCpp
-else
-    git pull
-fi
-
-# Clone HelloAssembler
-if [ ! -d "$WORKSPACE_DIR/HelloAssembler" ]; then
-    git clone https://github.com/plt-tud/MRT-HelloAssembler.git workspace/HelloAssembler
-    eclipse/eclipse -nosplash -data workspace -application org.eclipse.cdt.managedbuilder.core.headlessbuild -import $WORKSPACE_DIR/HelloAssembler
-else
-    git pull
-fi
+# Clone and import repositories
+for REPO in "${GITHUB_REPOS[@]}" 
+do
+    echo " $REPO"
+    if [ ! -d "$WORKSPACE_DIR/$REPO" ]; then
+        git clone https://github.com/plt-tud/$REPO.git workspace/$REPO
+        eclipse/eclipse -nosplash -data workspace -application org.eclipse.cdt.managedbuilder.core.headlessbuild -import $WORKSPACE_DIR/$REPO
+    else
+        git pull
+    fi
+done
 
 echo " DONE"
 echo ""
