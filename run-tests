@@ -1,4 +1,5 @@
 #!/bin/bash
 export PATH=$PATH:"$PWD/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
 cd test
-./test_cross_compilation_toolchain
+./test_gcc_cross_toolchain
+./test_as_cross_toolchain
