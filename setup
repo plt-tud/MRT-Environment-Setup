@@ -135,7 +135,7 @@ do
         git clone https://github.com/plt-tud/$REPO.git workspace/$REPO
         eclipse/eclipse -nosplash -data workspace -application org.eclipse.cdt.managedbuilder.core.headlessbuild -import $WORKSPACE_DIR/$REPO
     else
-        git pull
+        git -C $WORKSPACE_DIR/$REPO pull
     fi
 done
 
