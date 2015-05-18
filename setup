@@ -4,6 +4,9 @@
 # Author      : J. Pfeffer
 # License     : GPL
 
+## Planned Features
+# Allow 32-bit architecture (branches for Eclipse and PATH in run-eclipse, etc...)
+# Eclipse headless import-all instead of import
 
 ## Variables ##
 WORKSPACE_DIR="workspace"
