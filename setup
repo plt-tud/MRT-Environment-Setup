@@ -30,7 +30,7 @@ wget"
 GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "MRT1-AS_00_Hallo" )
 
 # C projects
-GITHUB_REPOS=( "MRT1-C_00_Hallo" "MRT1-C_01_Datentypen" "MRT1-C_02_Identifier" "MRT1-C_03_Ausdruck" "MRT1-C_04_Flusskontrolle" "MRT1-C_05_Felder" "MRT1-C_06_Struct" "MRT1-C_07_Zeiger" "MRT1-C_08_Strukturzeiger" "MRT1-AS_00_Hallo" "MRT1-CPP_00_Hallo")
+GITHUB_REPOS=( "MRT1-C_00_Hallo" "MRT1-C_01_Datentypen" "MRT1-C_02_Identifier" "MRT1-C_03_Ausdruck" "MRT1-C_04_Flusskontrolle" "MRT1-C_05_Felder" "MRT1-C_06_Struct" "MRT1-C_07_Zeiger" "MRT1-C_08_Strukturzeiger")
 
 # C++ projects
 GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "MRT1-CPP_00_Hallo")
