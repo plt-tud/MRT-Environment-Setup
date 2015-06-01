@@ -11,17 +11,25 @@
 ## Variables ##
 WORKSPACE_DIR="workspace"
 ARCHITECTURE=`uname -m`
+if [ -x /usr/bin/lsb_release ]; then
+  DISTRIBUTION=`/usr/bin/lsb_release -si | awk '{print tolower($0); exit 0}'`
+  DISTVERSION=`/usr/bin/lsb_release -sr | awk '{print tolower($0); exit 0}'`
+elif [ -x /usr/bin/lsb-release ]; then
+  DISTRIBUTION=`/usr/bin/lsb-release -si | awk '{print tolower($0); exit 0}'`
+  DISTVERSION=`/usr/bin/lsb-release -sr | awk '{print tolower($0); exit 0}'`
+else
+  DISTRIBUTION="unknown"
+  DISTVERSION="unknown"
+fi
 
 # Cleaning (true/false)
 CLEANING=true
 
 # Required packages ##
 # Essential packages for builiding, java (for Eclipse) and wget to download resources
-REQUIREMENTS="\
-build-essential \
-git \
-openjdk-7-jre \
-wget"
+REQUIREMENTS="build-essential git openjdk-7-jre wget"
+REQUIREMENTS_DEBIAN=$REQURIREMENTS
+REQUIREMENTS_SUSE="gcc gcc-c++ make git wget java-1_7_0-openjdk"
 
 # Libraries to install
 #REQUIREMENTS+=" libboost-all-dev"
@@ -62,13 +70,33 @@ function download()
     echo " DONE"
 }
 
+function install_dependencies() {
+    echo "Installing requirements (calling sudo) ..."
+    INSTALLOK="FALSE"
+    if [ -n "$(echo $DISTRIBUTION | grep debian)" -o -n "$(echo $DISTRO | grep ubuntu)" ]; then
+        sudo apt-get -q --show-progress install $REQUIREMENTS_DEBIAN && INSTALLOK="TRUE"
+    elif [ -n "$(echo $DISTRIBUTION | grep suse)" ]; then
+        sudo zypper install -l --no-recommends $REQUIREMENTS_SUSE && INSTALLOK="TRUE"
+    else
+        echo "Unable to determine the package manager for your distribution ($DISTRIBUTION/$DISTVERION)."
+        exit 1
+    fi
+    if  [ $INSTALLOK != "TRUE" ]; then 
+        echo " Failed."
+        exit 1
+    else
+        echo " DONE"
+    fi
+    echo ""
+}
+
 ##### Welcome #####
 echo "This script will install the MRT lecture programming environment for Raspberry Pi cross-compilation."
 echo "It will download ~400 MB and use ~1.5GB disk space."
 echo
 read -p "Would you like to continue? (y/N) " -n 1 -r
 echo    
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+if [ -z "$(echo $REPLY | grep -i y)" ]; then
     exit 0
 fi
 
@@ -90,10 +118,7 @@ fi
 export PATH=$PATH:"$PWD/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
 
 # Install requirements
-echo "Installing requirements ..."
-sudo apt-get -q --show-progress install $REQUIREMENTS
-echo " DONE"
-echo ""
+install_dependencies
 
 # Download eclipse
 if [ -d "eclipse" ]; then
