@@ -154,6 +154,8 @@ else
   DISTVERSION="unknown"
 fi
 
+process_arguments
+
 ##### Welcome #####
 echo "This script will install the MRT lecture programming environment for Raspberry Pi cross-compilation."
 echo "It will download ~400 MB and use ~1.5GB disk space."
