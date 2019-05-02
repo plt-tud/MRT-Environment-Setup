@@ -1,29 +1,25 @@
 #!/bin/bash
 
 # Version     : 0.4
-# Author      : J. Pfeffer, Chris Iatrou, Martin Heinl
+# Author      : Chris Iatrou, Martin Heinl, Johannes Pfeffer,
 # License     : GPL
 
 ## Planned Features
 # Allow 32-bit architecture (branches for Eclipse and PATH in run-eclipse, etc...)
 # Eclipse headless import-all instead of import
 
-## Variables ##
+
+function usage() {
+  echo "This is the setup script for the PLT Microcomputingtechnologies 1/2 toolchain and IDE."
+  
+  echo "Usage"
+  echo "  ./setup [--batch]"
+}
+
+## Globals
+
 WORKSPACE_DIR="workspace"
 ARCHITECTURE=`uname -m`
-if [ -x /usr/bin/lsb_release ]; then
-  DISTRIBUTION=`/usr/bin/lsb_release -si | awk '{print tolower($0); exit 0}'`
-  DISTVERSION=`/usr/bin/lsb_release -sr | awk '{print tolower($0); exit 0}'`
-elif [ -x /usr/bin/lsb-release ]; then
-  DISTRIBUTION=`/usr/bin/lsb-release -si | awk '{print tolower($0); exit 0}'`
-  DISTVERSION=`/usr/bin/lsb-release -sr | awk '{print tolower($0); exit 0}'`
-else
-  DISTRIBUTION="unknown"
-  DISTVERSION="unknown"
-fi
-
-# Cleaning (true/false)
-CLEANING=true
 
 # Required packages ##
 # Essential packages for builiding, java (for Eclipse) and wget to download resources
@@ -31,33 +27,35 @@ REQUIREMENTS="build-essential git openjdk-7-jre wget"
 REQUIREMENTS_DEBIAN=$REQUIREMENTS
 REQUIREMENTS_SUSE="gcc gcc-c++ make git wget java-1_7_0-openjdk"
 
-
-
-# Libraries to install
-#REQUIREMENTS+=" libboost-all-dev"
-#REQUIREMENTS+=" libsfml-dev"
-
-# GitHub repos to clone and import into the workspace
-# For automatic import, the project name should be the same as the repository name
-# AS projects
-GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "MRT1-AS_00_Hallo" )
-
-# C projects
-GITHUB_REPOS=( "MRT1-C_00_Hallo" "MRT1-C_01_Datentypen" "MRT1-C_02_Identifier" "MRT1-C_03_Ausdruck" "MRT1-C_04_Flusskontrolle" "MRT1-C_05_Felder" "MRT1-C_06_Struct" "MRT1-C_07_Zeiger" "MRT1-C_08_Strukturzeiger")
-
-# C++ projects
-GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "MRT1-CPP_00_Hallo")
-
-# Eclipse package solution to install
+# Eclipse version to install
 ECLIPSE_PACKAGE="http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR2/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz&r=1"
 
-## Functions ##
+# GitHub repos to clone and import into the workspace
+GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "https://github.com/plt-tud/PLT_MRT_ARM-RPi2.git" )
 
-function error () { 
+## Config values/defaults for arguments
+CFG_BATCH_MODE=false  # Don't ask questions... assume defaults
+CFG_CLEANUP=true      # Remove any downloaded data (reinstall)
+
+function process_arguments() {
+  while [ $? -gt 0 ]; do
+    ARG="$1"
+    
+    if [ ${ARG}="-batch" -o  ${ARG}="--batch" ]; then
+      CFG_BATCH_MODE=true
+    elif [ ${ARG}="--no-clean" -o  ${ARG}="--keep" ]; then
+      CFG_CLEANUP=false
+    fi
+    
+    shift 1
+  done
+}
+
+function log_error () { 
  echo " Error: $@" ; 
 }
 
-function info () { 
+function log_info () { 
  echo " Info: $@" ; 
 }
 
@@ -114,12 +112,33 @@ function install_dependencies() {
     echo ""
 }
 
+################################################################v
+## Script/Main/Start
+################################################################v
+
+if [ -x /usr/bin/lsb_release ]; then
+  DISTRIBUTION=`/usr/bin/lsb_release -si | awk '{print tolower($0); exit 0}'`
+  DISTVERSION=`/usr/bin/lsb_release -sr | awk '{print tolower($0); exit 0}'`
+elif [ -x /usr/bin/lsb-release ]; then
+  DISTRIBUTION=`/usr/bin/lsb-release -si | awk '{print tolower($0); exit 0}'`
+  DISTVERSION=`/usr/bin/lsb-release -sr | awk '{print tolower($0); exit 0}'`
+else
+  DISTRIBUTION="unknown"
+  DISTVERSION="unknown"
+fi
+
 ##### Welcome #####
 echo "This script will install the MRT lecture programming environment for Raspberry Pi cross-compilation."
 echo "It will download ~400 MB and use ~1.5GB disk space."
 echo
-read -p "Would you like to continue? (y/N) " -n 1 -r
-echo    
+
+if [ ! $CFG_BATCH_MODE=true ]; then
+  read -p "Would you like to continue? (y/N) " -n 1 -r
+  echo    
+else
+  REPLY=y
+fi
+
 if [ -z "$(echo $REPLY | grep -i y)" ]; then
     exit 0
 fi
@@ -127,13 +146,13 @@ fi
 ##### Some checks #####
 # Check architecture
 if [ $ARCHITECTURE != "x86_64" ]; then
-    error "This script is only for the x86_64 architecture."
+    log_error "This script is only for the x86_64 architecture."
     exit 1
 fi
 
 # Check if Eclipse is running
 if ps ax | grep eclipse.equinox | grep -v grep | grep -v $0 > /dev/null; then
-    error "Eclipse is running! Please exit Eclipse!"
+    log_error "Eclipse is running! Please exit Eclipse!"
     exit 1
 fi
 
@@ -146,7 +165,7 @@ install_dependencies
 
 # Download eclipse
 if [ -d "eclipse" ]; then
-    info "The 'eclipse' folder already exists."
+    log_info "The 'eclipse' folder already exists."
     echo ""
 else
     echo "Downloading eclipse ..."
@@ -160,7 +179,7 @@ fi
 
 # Raspberry Pi cross-compilation tool chain
 if [ -d "raspberrypi" ]; then
-    info "The folder 'raspberrypi' already exists."
+    log_info "The folder 'raspberrypi' already exists."
     echo ""
 else
     echo "Cloning the Raspberry Pi tools repository. This may take a while, it is big (~200MB download, ~1GB afterwards) ..."
