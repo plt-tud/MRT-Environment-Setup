@@ -85,14 +85,16 @@ function do_as_root() {
 function install_dependencies() {
     echo "Installing requirements (calling sudo) ..."
     INSTALLOK='false'
-
+    DEB_CHOOSEINSTALLER='99'
+    
     if [ -n "$(echo $DISTRIBUTION | grep debian)" -o -n "$(echo $DISTRIBUTION | grep ubuntu)" -o -n "$(echo $DISTRIBUTION | grep mint )"  ]; then
       
       while [ $INSTALLOK = 'false' ]; do
         echo -e "You are using a debian based distribution.\nDo you want to use 'apt-get' or 'aptitude' to install dependencies?\n'1' for 'apt'\n2 for 'apt-get'\n'3' for 'aptitude'\n'0' to abort"
         
         if [  $CFG_BATCH_MODE = 'true' ]; then
-          DEB_CHOOSEINSTALLER=2 # use apt-get, most compatible both /w ubuntu and debian based distros
+          log_info "Batch-mode: Using apt-get"
+          DEB_CHOOSEINSTALLER='2' # use apt-get, most compatible both /w ubuntu and debian based distros
         else
           read -p "> " -n 1 -r DEB_CHOOSEINSTALLER
           echo -e "\n"
