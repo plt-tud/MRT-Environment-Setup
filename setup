@@ -38,31 +38,33 @@ CFG_BATCH_MODE='false'        # Don't ask questions... assume defaults
 CFG_CLEANUP='false'           # Remove any downloaded data, such as eclipse, workspaces, repos, etc (reinstall)
 CFG_CHECK_RUNNING='false'     # Don't check if eclipse is running. Just update.
 
-function process_arguments() {
-  while [ $? -gt 0 ]; do
-    ARG="$1"
-    
-    if [ ${ARG}="-batch" -o  ${ARG}="--batch" ]; then
-      log_info "ARG: Batch"
-      CFG_BATCH_MODE='true'
-    elif [ ${ARG}="--no-clean" -o  ${ARG}="--keep" ]; then
-      log_info "ARG: Not cleaning up downloads"
-      CFG_CLEANUP='false'
-    elif [ ${ARG}="--skipruncheck" ]; then
-      log_info "ARG: Executing installer even if eclipse is still running"
-      CFG_CHECK_RUNNING='true'
-    fi
-    
-    shift 1
-  done
-}
-
 function log_error () { 
  echo " Error: $@" ; 
 }
 
 function log_info () { 
  echo " Info: $@" ; 
+}
+
+
+function process_arguments() {  
+  while [ $# -gt 0 ]; do
+    ARG="$1"
+    log_info "processing argument $ARG"
+    if [ ${ARG} = "-batch" -o  ${ARG} = "--batch" ]; then
+      CFG_BATCH_MODE='true'
+    elif [ ${ARG} = "--no-clean" -o  ${ARG} = "--keep" ]; then
+      CFG_CLEANUP='false'
+    elif [ ${ARG} = "--skipruncheck" ]; then
+      CFG_CHECK_RUNNING='true'
+    else
+      log_error "Uknown argument: ${ARG}"
+      usage
+      exit 1
+    fi
+    
+    shift 1
+  done
 }
 
 function download()
@@ -154,7 +156,7 @@ else
   DISTVERSION="unknown"
 fi
 
-process_arguments
+process_arguments $@
 
 ##### Welcome #####
 echo "This script will install the MRT lecture programming environment for Raspberry Pi cross-compilation."
