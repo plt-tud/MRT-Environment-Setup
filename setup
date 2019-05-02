@@ -34,9 +34,9 @@ ECLIPSE_PACKAGE="http://www.eclipse.org/downloads/download.php?file=/technology/
 GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "https://github.com/plt-tud/PLT_MRT_ARM-RPi2.git" )
 
 ## Config values/defaults for arguments
-CFG_BATCH_MODE=false        # Don't ask questions... assume defaults
-CFG_CLEANUP=false           # Remove any downloaded data, such as eclipse, workspaces, repos, etc (reinstall)
-CFG_CHECK_RUNNING=true      # Don't check if eclipse is running. Just update.
+CFG_BATCH_MODE='false'        # Don't ask questions... assume defaults
+CFG_CLEANUP='false'           # Remove any downloaded data, such as eclipse, workspaces, repos, etc (reinstall)
+CFG_CHECK_RUNNING='false'     # Don't check if eclipse is running. Just update.
 
 function process_arguments() {
   while [ $? -gt 0 ]; do
@@ -154,7 +154,7 @@ if [ $ARCHITECTURE != "x86_64" ]; then
 fi
 
 # Check if Eclipse is running
-if [ $CFG_CHECK_RUNNING=true ]; then
+if [ $CFG_CHECK_RUNNING = 'true' ]; then
   if ps ax | grep eclipse.equinox | grep -v grep | grep -v $0 > /dev/null; then
       log_error "Eclipse is running! Please exit Eclipse!"
       exit 1
@@ -169,7 +169,7 @@ export PATH=$PATH:"$PWD/raspberrypi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnuea
 install_dependencies
 
 # Download eclipse
-if [ $CFG_CLEANUP=true -a -d "eclipse" ]; then
+if [ $CFG_CLEANUP = 'true' -a -d "eclipse" ]; then
   log_info "Cleanup: removing existing eclipse install"
   rm -rf "eclipse"
 fi
@@ -188,6 +188,11 @@ else
 fi
 
 # Raspberry Pi cross-compilation tool chain
+if [ $CFG_CLEANUP = 'true' -a -d "raspberrypi" ]; then
+  log_info "Cleanup: removing existing raspberrypi install"
+  rm -rf "raspberrypi"
+fi
+
 if [ -d "raspberrypi" ]; then
     log_info "The folder 'raspberrypi' already exists."
     echo ""
@@ -200,9 +205,14 @@ else
 fi
 
 # Create workspace
+if [ $CFG_CLEANUP = 'true' -a -d "${WORKSPACE_DIR}" ]; then
+  log_info "Cleanup: removing existing raspberrypi install"
+  rm -rf "${WORKSPACE_DIR}"
+fi
+
 echo "Creating/updating MRT workspace ..."
-if [ ! -d $WORKSPACE_DIR ]; then
-    mkdir $WORKSPACE_DIR
+if [ ! -d "${WORKSPACE_DIR}" ]; then
+    mkdir "${WORKSPACE_DIR}"
 fi
 
 # Clone and import repositories
