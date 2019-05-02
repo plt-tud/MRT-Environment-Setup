@@ -98,8 +98,10 @@ function install_dependencies() {
         echo -e "You are using a debian based distribution.\nDo you want to use 'apt-get' or 'aptitude' to install dependencies?\n'1' for 'apt'\n'2' for 'apt-get'\n'3' for 'aptitude'\n'0' to abort"
         
         if [  $CFG_BATCH_MODE = 'true' ]; then
-          log_info "Batch-mode: Using apt-get"
-          DEB_CHOOSEINSTALLER='2' # use apt-get, most compatible both /w ubuntu and debian based distros
+          # Apt-get appears to be a common basis for debian (newer ones use apt, but still provide apt-get)
+          do_as_root apt-get -y --allow-unauthenticated --show-progress install $REQUIREMENTS_DEBIAN && INSTALLOK='true'
+          INSTALLOK='true'
+          DEB_CHOOSEINSTALLER='2'
         else
           read -p "> " -n 1 -r DEB_CHOOSEINSTALLER
           echo -e "\n"
