@@ -43,11 +43,14 @@ function process_arguments() {
     ARG="$1"
     
     if [ ${ARG}="-batch" -o  ${ARG}="--batch" ]; then
-      CFG_BATCH_MODE=true
+      log_info "ARG: Batch"
+      CFG_BATCH_MODE='true'
     elif [ ${ARG}="--no-clean" -o  ${ARG}="--keep" ]; then
-      CFG_CLEANUP=false
+      log_info "ARG: Not cleaning up downloads"
+      CFG_CLEANUP='false'
     elif [ ${ARG}="--skipruncheck" ]; then
-      CFG_CHECK_RUNNING=true
+      log_info "ARG: Executing installer even if eclipse is still running"
+      CFG_CHECK_RUNNING='true'
     fi
     
     shift 1
@@ -90,7 +93,7 @@ function install_dependencies() {
     if [ -n "$(echo $DISTRIBUTION | grep debian)" -o -n "$(echo $DISTRIBUTION | grep ubuntu)" -o -n "$(echo $DISTRIBUTION | grep mint )"  ]; then
       
       while [ $INSTALLOK = 'false' ]; do
-        echo -e "You are using a debian based distribution.\nDo you want to use 'apt-get' or 'aptitude' to install dependencies?\n'1' for 'apt'\n2 for 'apt-get'\n'3' for 'aptitude'\n'0' to abort"
+        echo -e "You are using a debian based distribution.\nDo you want to use 'apt-get' or 'aptitude' to install dependencies?\n'1' for 'apt'\n'2' for 'apt-get'\n'3' for 'aptitude'\n'0' to abort"
         
         if [  $CFG_BATCH_MODE = 'true' ]; then
           log_info "Batch-mode: Using apt-get"
@@ -156,11 +159,12 @@ echo "This script will install the MRT lecture programming environment for Raspb
 echo "It will download ~400 MB and use ~1.5GB disk space."
 echo
 
-if [ ! $CFG_BATCH_MODE=true ]; then
+if [ $CFG_BATCH_MODE = 'true' ]; then
+  log_info "Batch-Mode: assuming 'yes'"
+  REPLY=y
+else
   read -p "Would you like to continue? (y/N) " -n 1 -r
   echo    
-else
-  REPLY=y
 fi
 
 if [ -z "$(echo $REPLY | grep -i y)" ]; then
