@@ -13,7 +13,13 @@ function usage() {
   echo "This is the setup script for the PLT Microcomputingtechnologies 1/2 toolchain and IDE."
   
   echo "Usage"
-  echo "  ./setup [--batch] [--no-clean|--keep] [--skipruncheck]"
+  echo "  ./setup [--batch] [--clean] [--skipruncheck]"
+  echo ""
+  echo "Options:"
+  echo "--batch         Assume we are running on a debian based distro and pick appropriate options (for Cont. Integration)"
+  echo "--clean         Remove existing eclipse/toolchain/workspace components"
+  echo "--skipruncheck  Proceed with installation, even if eclipse is currently running"
+  echo ""
 }
 
 ## Globals
@@ -53,8 +59,8 @@ function process_arguments() {
     log_info "processing argument $ARG"
     if [ ${ARG} = "-batch" -o  ${ARG} = "--batch" ]; then
       CFG_BATCH_MODE='true'
-    elif [ ${ARG} = "--no-clean" -o  ${ARG} = "--keep" ]; then
-      CFG_CLEANUP='false'
+    elif [ ${ARG} = "-clean" -o  ${ARG} = "--clean" ]; then
+      CFG_CLEANUP='true'
     elif [ ${ARG} = "--skipruncheck" ]; then
       CFG_CHECK_RUNNING='true'
     else
