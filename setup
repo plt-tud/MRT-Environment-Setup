@@ -42,7 +42,7 @@ GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "https://github.com/plt-tud/PLT_MRT_ARM-RPi2
 ## Config values/defaults for arguments
 CFG_BATCH_MODE='false'        # Don't ask questions... assume defaults
 CFG_CLEANUP='false'           # Remove any downloaded data, such as eclipse, workspaces, repos, etc (reinstall)
-CFG_CHECK_RUNNING='false'     # Don't check if eclipse is running. Just update.
+CFG_CHECK_RUNNING='true'     # Don't check if eclipse is running. Just update.
 
 function log_error () { 
  echo " Error: $@" ; 
@@ -62,7 +62,7 @@ function process_arguments() {
     elif [ ${ARG} = "-clean" -o  ${ARG} = "--clean" ]; then
       CFG_CLEANUP='true'
     elif [ ${ARG} = "--skipruncheck" ]; then
-      CFG_CHECK_RUNNING='true'
+      CFG_CHECK_RUNNING='false'
     else
       log_error "Uknown argument: ${ARG}"
       usage
