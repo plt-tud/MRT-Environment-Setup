@@ -1,0 +1,3 @@
+[submodule "workspace/PLT_MRT_ARM-RPi2"]
+	path = workspace/PLT_MRT_ARM-RPi2
+	url = https://github.com/plt-tud/PLT_MRT_ARM-RPi2.git
