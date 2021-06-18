@@ -29,7 +29,7 @@ ARCHITECTURE=`uname -m`
 
 # Required packages ##
 # Essential packages for builiding, java (for Eclipse) and wget to download resources
-REQUIREMENTS="build-essential git openjdk-11-jre wget curl"
+REQUIREMENTS="build-essential git openjdk-11-jre wget curl libncurses5:i386 gdb"
 REQUIREMENTS_DEBIAN=$REQUIREMENTS
 REQUIREMENTS_SUSE="gcc gcc-c++ make git wget java-1_7_0-openjdk curl"
 
@@ -188,11 +188,6 @@ if [ $ARCHITECTURE != "i686" ]; then
     exit 1
 fi
 
-#if [ $ARCHITECTURE != "x86_64" ]; then
-#    log_error "This script is only for the x86_64 architecture."
-#    exit 1
-#fi
-
 # Check if Eclipse is running
 if [ $CFG_CHECK_RUNNING = 'true' ]; then
   if ps ax | grep eclipse.equinox | grep -v grep | grep -v $0 > /dev/null; then
@@ -214,15 +209,18 @@ if [ $CFG_CLEANUP = 'true' -a -d "eclipse" ]; then
   rm -rf "eclipse"
 fi
     
-if [ -d "eclipse" ]; then
+if [ -f "eclipse/eclipse" ]; then
     log_info "The 'eclipse' folder already exists."
     echo ""
 else
     echo "Downloading eclipse ..."
     download "$ECLIPSE_PACKAGE" eclipse.tar.gz
     echo "Extracting eclipse ..."
-    tar -xzf eclipse.tar.gz
+    
+    # Extract tar but keep the configuration directory that has already been set up in the repository
+    tar --skip-old-files -xzf eclipse.tar.gz
     rm -f eclipse.tar.gz
+    
     echo " DONE"
     echo ""
 fi
@@ -265,11 +263,9 @@ fi
 for REPO in "${GITHUB_REPOS[@]}" 
 do
     echo " $REPO"
-    if [ ! -d "$WORKSPACE_DIR/$REPO" ]; then
-        git clone https://github.com/plt-tud/$REPO.git workspace/$REPO
-    else
-        git -C $WORKSPACE_DIR/$REPO pull
-    fi
+    
+    rm -r workspace/$REPO
+    git clone https://github.com/plt-tud/$REPO.git workspace/$REPO
 done
 
 echo "Changing permissions to rwx for group and user..."
