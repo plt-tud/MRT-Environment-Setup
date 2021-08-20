@@ -268,6 +268,13 @@ do
     git clone https://github.com/plt-tud/$REPO.git workspace/$REPO
 done
 
+# Create ssh configuration files
+if [ ! -f /home/mrt/.ssh/known_hosts ]; then
+	echo "Creating ~/.ssh/known_hosts"
+	mkdir -p /home/mrt/.ssh/
+	touch /home/mrt/.ssh/known_hosts
+fi
+
 echo "Changing permissions to rwx for group and user..."
 
 chmod -R 755 .
