@@ -9,19 +9,13 @@
                 				
                 <language id="org.eclipse.cdt.core.gcc">
                     					
-                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/8/include">
+                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/10/include">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
                     <entry kind="includePath" name="/usr/local/include">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/8/include-fixed">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -34,6 +28,12 @@
                     </entry>
                     					
                     <entry kind="includePath" name="/usr/include">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="_ILP32" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -202,6 +202,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__DBL_MIN__" value="((double)2.22507385850720138309023271733240406e-308L)">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__DBL_NORM_MAX__" value="((double)1.79769313486231570814527423731704357e+308L)">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -453,6 +459,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT128_NORM_MAX__" value="1.18973149535723176508575932662800702e+4932F128">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT32X_DECIMAL_DIG__" value="17">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -532,6 +544,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT32X_MIN__" value="2.22507385850720138309023271733240406e-308F32x">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT32X_NORM_MAX__" value="1.79769313486231570814527423731704357e+308F32x">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -621,6 +639,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT32_NORM_MAX__" value="3.40282346638528859811704183484516925e+38F32">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT64X_DECIMAL_DIG__" value="21">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -705,6 +729,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT64X_NORM_MAX__" value="1.18973149535723176502126385303097021e+4932F64x">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT64_DECIMAL_DIG__" value="17">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -784,6 +814,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT64_MIN__" value="2.22507385850720138309023271733240406e-308F64">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT64_NORM_MAX__" value="1.79769313486231570814527423731704357e+308F64">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -880,6 +916,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT_MIN__" value="1.17549435082228750796873653722224568e-38F">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT_NORM_MAX__" value="3.40282346638528859811704183484516925e+38F">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -1005,13 +1047,13 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC_MINOR__" value="3">
+                    <entry kind="macro" name="__GNUC_MINOR__" value="2">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC_PATCHLEVEL__" value="0">
+                    <entry kind="macro" name="__GNUC_PATCHLEVEL__" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -1023,13 +1065,25 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC__" value="8">
+                    <entry kind="macro" name="__GNUC__" value="10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GXX_ABI_VERSION" value="1013">
+                    <entry kind="macro" name="__GXX_ABI_VERSION" value="1014">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__HAVE_SPECULATION_SAFE_VALUE" value="1">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__ILP32__" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -1384,6 +1438,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__LDBL_MIN__" value="3.36210314311209350626267781732175260e-4932L">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__LDBL_NORM_MAX__" value="1.18973149535723176502126385303097021e+4932L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -1893,7 +1953,7 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__VERSION__" value="&quot;8.3.0&quot;">
+                    <entry kind="macro" name="__VERSION__" value="&quot;10.2.1 20210110&quot;">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -1954,18 +2014,6 @@
                     </entry>
                     					
                     <entry kind="macro" name="__gnu_linux__" value="1">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="macro" name="__has_include(STR)" value="__has_include__(STR)">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="macro" name="__has_include_next(STR)" value="__has_include_next__(STR)">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -2065,37 +2113,31 @@
                 				
                 <language id="org.eclipse.cdt.core.g++">
                     					
-                    <entry kind="includePath" name="/usr/include/c++/8">
+                    <entry kind="includePath" name="/usr/include/c++/10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="includePath" name="/usr/include/i386-linux-gnu/c++/8">
+                    <entry kind="includePath" name="/usr/include/i386-linux-gnu/c++/10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="includePath" name="/usr/include/c++/8/backward">
+                    <entry kind="includePath" name="/usr/include/c++/10/backward">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/8/include">
+                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/10/include">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
                     <entry kind="includePath" name="/usr/local/include">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/8/include-fixed">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -2114,6 +2156,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="_GNU_SOURCE" value="1">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="_ILP32" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -2282,6 +2330,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__DBL_MIN__" value="double(2.22507385850720138309023271733240406e-308L)">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__DBL_NORM_MAX__" value="double(1.79769313486231570814527423731704357e+308L)">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -2545,6 +2599,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT128_NORM_MAX__" value="1.18973149535723176508575932662800702e+4932F128">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT32X_DECIMAL_DIG__" value="17">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -2624,6 +2684,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT32X_MIN__" value="2.22507385850720138309023271733240406e-308F32x">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT32X_NORM_MAX__" value="1.79769313486231570814527423731704357e+308F32x">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -2713,6 +2779,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT32_NORM_MAX__" value="3.40282346638528859811704183484516925e+38F32">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT64X_DECIMAL_DIG__" value="21">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -2797,6 +2869,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT64X_NORM_MAX__" value="1.18973149535723176502126385303097021e+4932F64x">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT64_DECIMAL_DIG__" value="17">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -2876,6 +2954,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT64_MIN__" value="2.22507385850720138309023271733240406e-308F64">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT64_NORM_MAX__" value="1.79769313486231570814527423731704357e+308F64">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -2972,6 +3056,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT_MIN__" value="1.17549435082228750796873653722224568e-38F">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT_NORM_MAX__" value="3.40282346638528859811704183484516925e+38F">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -3097,13 +3187,13 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC_MINOR__" value="3">
+                    <entry kind="macro" name="__GNUC_MINOR__" value="2">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC_PATCHLEVEL__" value="0">
+                    <entry kind="macro" name="__GNUC_PATCHLEVEL__" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -3115,19 +3205,19 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC__" value="8">
+                    <entry kind="macro" name="__GNUC__" value="10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUG__" value="8">
+                    <entry kind="macro" name="__GNUG__" value="10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GXX_ABI_VERSION" value="1013">
+                    <entry kind="macro" name="__GXX_ABI_VERSION" value="1014">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -3146,6 +3236,18 @@
                     </entry>
                     					
                     <entry kind="macro" name="__GXX_WEAK__" value="1">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__HAVE_SPECULATION_SAFE_VALUE" value="1">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__ILP32__" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -3500,6 +3602,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__LDBL_MIN__" value="3.36210314311209350626267781732175260e-4932L">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__LDBL_NORM_MAX__" value="1.18973149535723176502126385303097021e+4932L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -4003,7 +4111,7 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__VERSION__" value="&quot;8.3.0&quot;">
+                    <entry kind="macro" name="__VERSION__" value="&quot;10.2.1 20210110&quot;">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -4069,217 +4177,205 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_aggregate_nsdmi" value="201304">
+                    <entry kind="macro" name="__cpp_aggregate_nsdmi" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_alias_templates" value="200704">
+                    <entry kind="macro" name="__cpp_alias_templates" value="200704L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_attributes" value="200809">
+                    <entry kind="macro" name="__cpp_attributes" value="200809L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_binary_literals" value="201304">
+                    <entry kind="macro" name="__cpp_binary_literals" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_constexpr" value="201304">
+                    <entry kind="macro" name="__cpp_constexpr" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_decltype" value="200707">
+                    <entry kind="macro" name="__cpp_decltype" value="200707L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_decltype_auto" value="201304">
+                    <entry kind="macro" name="__cpp_decltype_auto" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_delegating_constructors" value="200604">
+                    <entry kind="macro" name="__cpp_delegating_constructors" value="200604L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_digit_separators" value="201309">
+                    <entry kind="macro" name="__cpp_digit_separators" value="201309L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_exceptions" value="199711">
+                    <entry kind="macro" name="__cpp_exceptions" value="199711L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_generic_lambdas" value="201304">
+                    <entry kind="macro" name="__cpp_generic_lambdas" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_hex_float" value="201603">
+                    <entry kind="macro" name="__cpp_hex_float" value="201603L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_inheriting_constructors" value="201511">
+                    <entry kind="macro" name="__cpp_inheriting_constructors" value="201511L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_init_captures" value="201304">
+                    <entry kind="macro" name="__cpp_init_captures" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_initializer_lists" value="200806">
+                    <entry kind="macro" name="__cpp_initializer_lists" value="200806L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_lambdas" value="200907">
+                    <entry kind="macro" name="__cpp_lambdas" value="200907L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_nsdmi" value="200809">
+                    <entry kind="macro" name="__cpp_nsdmi" value="200809L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_range_based_for" value="200907">
+                    <entry kind="macro" name="__cpp_range_based_for" value="200907L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_raw_strings" value="200710">
+                    <entry kind="macro" name="__cpp_raw_strings" value="200710L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_ref_qualifiers" value="200710">
+                    <entry kind="macro" name="__cpp_ref_qualifiers" value="200710L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_return_type_deduction" value="201304">
+                    <entry kind="macro" name="__cpp_return_type_deduction" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_rtti" value="199711">
+                    <entry kind="macro" name="__cpp_rtti" value="199711L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_runtime_arrays" value="198712">
+                    <entry kind="macro" name="__cpp_runtime_arrays" value="198712L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_rvalue_reference" value="200610">
+                    <entry kind="macro" name="__cpp_rvalue_reference" value="200610L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_rvalue_references" value="200610">
+                    <entry kind="macro" name="__cpp_rvalue_references" value="200610L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_sized_deallocation" value="201309">
+                    <entry kind="macro" name="__cpp_sized_deallocation" value="201309L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_static_assert" value="200410">
+                    <entry kind="macro" name="__cpp_static_assert" value="200410L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_threadsafe_static_init" value="200806">
+                    <entry kind="macro" name="__cpp_threadsafe_static_init" value="200806L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_unicode_characters" value="200704">
+                    <entry kind="macro" name="__cpp_unicode_characters" value="200704L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_unicode_literals" value="200710">
+                    <entry kind="macro" name="__cpp_unicode_literals" value="200710L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_user_defined_literals" value="200809">
+                    <entry kind="macro" name="__cpp_user_defined_literals" value="200809L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_variable_templates" value="201304">
+                    <entry kind="macro" name="__cpp_variable_templates" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_variadic_templates" value="200704">
+                    <entry kind="macro" name="__cpp_variadic_templates" value="200704L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
                     <entry kind="macro" name="__gnu_linux__" value="1">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="macro" name="__has_include(STR)" value="__has_include__(STR)">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="macro" name="__has_include_next(STR)" value="__has_include_next__(STR)">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -4391,19 +4487,13 @@
                 				
                 <language id="org.eclipse.cdt.core.gcc">
                     					
-                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/8/include">
+                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/10/include">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
                     <entry kind="includePath" name="/usr/local/include">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/8/include-fixed">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -4416,6 +4506,12 @@
                     </entry>
                     					
                     <entry kind="includePath" name="/usr/include">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="_ILP32" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -4584,6 +4680,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__DBL_MIN__" value="((double)2.22507385850720138309023271733240406e-308L)">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__DBL_NORM_MAX__" value="((double)1.79769313486231570814527423731704357e+308L)">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -4835,6 +4937,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT128_NORM_MAX__" value="1.18973149535723176508575932662800702e+4932F128">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT32X_DECIMAL_DIG__" value="17">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -4914,6 +5022,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT32X_MIN__" value="2.22507385850720138309023271733240406e-308F32x">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT32X_NORM_MAX__" value="1.79769313486231570814527423731704357e+308F32x">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -5003,6 +5117,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT32_NORM_MAX__" value="3.40282346638528859811704183484516925e+38F32">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT64X_DECIMAL_DIG__" value="21">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -5087,6 +5207,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT64X_NORM_MAX__" value="1.18973149535723176502126385303097021e+4932F64x">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT64_DECIMAL_DIG__" value="17">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -5166,6 +5292,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT64_MIN__" value="2.22507385850720138309023271733240406e-308F64">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT64_NORM_MAX__" value="1.79769313486231570814527423731704357e+308F64">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -5262,6 +5394,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT_MIN__" value="1.17549435082228750796873653722224568e-38F">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT_NORM_MAX__" value="3.40282346638528859811704183484516925e+38F">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -5387,13 +5525,13 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC_MINOR__" value="3">
+                    <entry kind="macro" name="__GNUC_MINOR__" value="2">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC_PATCHLEVEL__" value="0">
+                    <entry kind="macro" name="__GNUC_PATCHLEVEL__" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -5405,13 +5543,25 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC__" value="8">
+                    <entry kind="macro" name="__GNUC__" value="10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GXX_ABI_VERSION" value="1013">
+                    <entry kind="macro" name="__GXX_ABI_VERSION" value="1014">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__HAVE_SPECULATION_SAFE_VALUE" value="1">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__ILP32__" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -5766,6 +5916,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__LDBL_MIN__" value="3.36210314311209350626267781732175260e-4932L">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__LDBL_NORM_MAX__" value="1.18973149535723176502126385303097021e+4932L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -6275,7 +6431,7 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__VERSION__" value="&quot;8.3.0&quot;">
+                    <entry kind="macro" name="__VERSION__" value="&quot;10.2.1 20210110&quot;">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -6336,18 +6492,6 @@
                     </entry>
                     					
                     <entry kind="macro" name="__gnu_linux__" value="1">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="macro" name="__has_include(STR)" value="__has_include__(STR)">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="macro" name="__has_include_next(STR)" value="__has_include_next__(STR)">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -6447,37 +6591,31 @@
                 				
                 <language id="org.eclipse.cdt.core.g++">
                     					
-                    <entry kind="includePath" name="/usr/include/c++/8">
+                    <entry kind="includePath" name="/usr/include/c++/10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="includePath" name="/usr/include/i386-linux-gnu/c++/8">
+                    <entry kind="includePath" name="/usr/include/i386-linux-gnu/c++/10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="includePath" name="/usr/include/c++/8/backward">
+                    <entry kind="includePath" name="/usr/include/c++/10/backward">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/8/include">
+                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/10/include">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
                     <entry kind="includePath" name="/usr/local/include">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="includePath" name="/usr/lib/gcc/i686-linux-gnu/8/include-fixed">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -6496,6 +6634,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="_GNU_SOURCE" value="1">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="_ILP32" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -6664,6 +6808,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__DBL_MIN__" value="double(2.22507385850720138309023271733240406e-308L)">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__DBL_NORM_MAX__" value="double(1.79769313486231570814527423731704357e+308L)">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -6927,6 +7077,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT128_NORM_MAX__" value="1.18973149535723176508575932662800702e+4932F128">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT32X_DECIMAL_DIG__" value="17">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -7006,6 +7162,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT32X_MIN__" value="2.22507385850720138309023271733240406e-308F32x">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT32X_NORM_MAX__" value="1.79769313486231570814527423731704357e+308F32x">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -7095,6 +7257,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT32_NORM_MAX__" value="3.40282346638528859811704183484516925e+38F32">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT64X_DECIMAL_DIG__" value="21">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -7179,6 +7347,12 @@
                         					
                     </entry>
                     					
+                    <entry kind="macro" name="__FLT64X_NORM_MAX__" value="1.18973149535723176502126385303097021e+4932F64x">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
                     <entry kind="macro" name="__FLT64_DECIMAL_DIG__" value="17">
                         						
                         <flag value="BUILTIN|READONLY"/>
@@ -7258,6 +7432,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT64_MIN__" value="2.22507385850720138309023271733240406e-308F64">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT64_NORM_MAX__" value="1.79769313486231570814527423731704357e+308F64">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -7354,6 +7534,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__FLT_MIN__" value="1.17549435082228750796873653722224568e-38F">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__FLT_NORM_MAX__" value="3.40282346638528859811704183484516925e+38F">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -7479,13 +7665,13 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC_MINOR__" value="3">
+                    <entry kind="macro" name="__GNUC_MINOR__" value="2">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC_PATCHLEVEL__" value="0">
+                    <entry kind="macro" name="__GNUC_PATCHLEVEL__" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -7497,19 +7683,19 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUC__" value="8">
+                    <entry kind="macro" name="__GNUC__" value="10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GNUG__" value="8">
+                    <entry kind="macro" name="__GNUG__" value="10">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__GXX_ABI_VERSION" value="1013">
+                    <entry kind="macro" name="__GXX_ABI_VERSION" value="1014">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -7528,6 +7714,18 @@
                     </entry>
                     					
                     <entry kind="macro" name="__GXX_WEAK__" value="1">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__HAVE_SPECULATION_SAFE_VALUE" value="1">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__ILP32__" value="1">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -7882,6 +8080,12 @@
                     </entry>
                     					
                     <entry kind="macro" name="__LDBL_MIN__" value="3.36210314311209350626267781732175260e-4932L">
+                        						
+                        <flag value="BUILTIN|READONLY"/>
+                        					
+                    </entry>
+                    					
+                    <entry kind="macro" name="__LDBL_NORM_MAX__" value="1.18973149535723176502126385303097021e+4932L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -8385,7 +8589,7 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__VERSION__" value="&quot;8.3.0&quot;">
+                    <entry kind="macro" name="__VERSION__" value="&quot;10.2.1 20210110&quot;">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
@@ -8451,217 +8655,205 @@
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_aggregate_nsdmi" value="201304">
+                    <entry kind="macro" name="__cpp_aggregate_nsdmi" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_alias_templates" value="200704">
+                    <entry kind="macro" name="__cpp_alias_templates" value="200704L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_attributes" value="200809">
+                    <entry kind="macro" name="__cpp_attributes" value="200809L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_binary_literals" value="201304">
+                    <entry kind="macro" name="__cpp_binary_literals" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_constexpr" value="201304">
+                    <entry kind="macro" name="__cpp_constexpr" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_decltype" value="200707">
+                    <entry kind="macro" name="__cpp_decltype" value="200707L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_decltype_auto" value="201304">
+                    <entry kind="macro" name="__cpp_decltype_auto" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_delegating_constructors" value="200604">
+                    <entry kind="macro" name="__cpp_delegating_constructors" value="200604L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_digit_separators" value="201309">
+                    <entry kind="macro" name="__cpp_digit_separators" value="201309L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_exceptions" value="199711">
+                    <entry kind="macro" name="__cpp_exceptions" value="199711L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_generic_lambdas" value="201304">
+                    <entry kind="macro" name="__cpp_generic_lambdas" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_hex_float" value="201603">
+                    <entry kind="macro" name="__cpp_hex_float" value="201603L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_inheriting_constructors" value="201511">
+                    <entry kind="macro" name="__cpp_inheriting_constructors" value="201511L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_init_captures" value="201304">
+                    <entry kind="macro" name="__cpp_init_captures" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_initializer_lists" value="200806">
+                    <entry kind="macro" name="__cpp_initializer_lists" value="200806L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_lambdas" value="200907">
+                    <entry kind="macro" name="__cpp_lambdas" value="200907L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_nsdmi" value="200809">
+                    <entry kind="macro" name="__cpp_nsdmi" value="200809L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_range_based_for" value="200907">
+                    <entry kind="macro" name="__cpp_range_based_for" value="200907L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_raw_strings" value="200710">
+                    <entry kind="macro" name="__cpp_raw_strings" value="200710L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_ref_qualifiers" value="200710">
+                    <entry kind="macro" name="__cpp_ref_qualifiers" value="200710L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_return_type_deduction" value="201304">
+                    <entry kind="macro" name="__cpp_return_type_deduction" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_rtti" value="199711">
+                    <entry kind="macro" name="__cpp_rtti" value="199711L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_runtime_arrays" value="198712">
+                    <entry kind="macro" name="__cpp_runtime_arrays" value="198712L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_rvalue_reference" value="200610">
+                    <entry kind="macro" name="__cpp_rvalue_reference" value="200610L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_rvalue_references" value="200610">
+                    <entry kind="macro" name="__cpp_rvalue_references" value="200610L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_sized_deallocation" value="201309">
+                    <entry kind="macro" name="__cpp_sized_deallocation" value="201309L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_static_assert" value="200410">
+                    <entry kind="macro" name="__cpp_static_assert" value="200410L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_threadsafe_static_init" value="200806">
+                    <entry kind="macro" name="__cpp_threadsafe_static_init" value="200806L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_unicode_characters" value="200704">
+                    <entry kind="macro" name="__cpp_unicode_characters" value="200704L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_unicode_literals" value="200710">
+                    <entry kind="macro" name="__cpp_unicode_literals" value="200710L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_user_defined_literals" value="200809">
+                    <entry kind="macro" name="__cpp_user_defined_literals" value="200809L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_variable_templates" value="201304">
+                    <entry kind="macro" name="__cpp_variable_templates" value="201304L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
-                    <entry kind="macro" name="__cpp_variadic_templates" value="200704">
+                    <entry kind="macro" name="__cpp_variadic_templates" value="200704L">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
                     </entry>
                     					
                     <entry kind="macro" name="__gnu_linux__" value="1">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="macro" name="__has_include(STR)" value="__has_include__(STR)">
-                        						
-                        <flag value="BUILTIN|READONLY"/>
-                        					
-                    </entry>
-                    					
-                    <entry kind="macro" name="__has_include_next(STR)" value="__has_include_next__(STR)">
                         						
                         <flag value="BUILTIN|READONLY"/>
                         					
