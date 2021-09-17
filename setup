@@ -29,15 +29,15 @@ ARCHITECTURE=`uname -m`
 
 # Required packages ##
 # Essential packages for builiding, java (for Eclipse) and wget to download resources
-REQUIREMENTS="build-essential git openjdk-8-jre wget"
+REQUIREMENTS="build-essential git openjdk-11-jre wget curl gdb libsdl1.2-dev libsdl2-dev libncurses-dev libncurses5"
 REQUIREMENTS_DEBIAN=$REQUIREMENTS
-REQUIREMENTS_SUSE="gcc gcc-c++ make git wget java-1_7_0-openjdk"
+REQUIREMENTS_SUSE="gcc gcc-c++ make git wget java-1_7_0-openjdk curl"
 
 # Eclipse version to install
-ECLIPSE_PACKAGE="http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR2/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz&r=1"
+ECLIPSE_PACKAGE="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2018-09/R/eclipse-cpp-2018-09-linux-gtk.tar.gz&r=1"
 
 # GitHub repos to clone and import into the workspace
-GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "https://github.com/plt-tud/PLT_MRT_ARM-RPi2.git" )
+GITHUB_REPOS=( "${GITHUB_REPOS[@]}" "PLT_MRT_ARM-RPi2" )
 
 ## Config values/defaults for arguments
 CFG_BATCH_MODE='false'        # Don't ask questions... assume defaults
@@ -77,10 +77,8 @@ function download()
 {
     local url=$1
     local target=$2
-    echo -n "    "
-    wget --progress=dot $url -O $target 2>&1 | grep --line-buffered "%" | \
-        sed -u -e "s,\.,,g" | awk '{printf("\b\b\b\b%4s", $2)}'
-    echo -ne "\b\b\b\b"
+    echo -n "    "    
+    curl -L "$url" -o $target
     echo " DONE"
 }
 
@@ -185,8 +183,8 @@ fi
 
 ##### Some checks #####
 # Check architecture
-if [ $ARCHITECTURE != "x86_64" ]; then
-    log_error "This script is only for the x86_64 architecture."
+if [ $ARCHITECTURE != "i686" ]; then
+    log_error "This script is only for the i686 architecture."
     exit 1
 fi
 
@@ -211,15 +209,18 @@ if [ $CFG_CLEANUP = 'true' -a -d "eclipse" ]; then
   rm -rf "eclipse"
 fi
     
-if [ -d "eclipse" ]; then
+if [ -f "eclipse/eclipse" ]; then
     log_info "The 'eclipse' folder already exists."
     echo ""
 else
     echo "Downloading eclipse ..."
     download "$ECLIPSE_PACKAGE" eclipse.tar.gz
     echo "Extracting eclipse ..."
-    tar -xzf eclipse.tar.gz
+    
+    # Extract tar but keep the configuration directory that has already been set up in the repository
+    tar --skip-old-files -xzf eclipse.tar.gz
     rm -f eclipse.tar.gz
+    
     echo " DONE"
     echo ""
 fi
@@ -239,6 +240,12 @@ else
     git clone --depth=1 https://github.com/raspberrypi/tools.git raspberrypi/tools
     echo " DONE"
     echo ""
+    
+    
+    # Remove unwanted tools
+    cd raspberrypi/tools/arm-bcm2708/
+    ls | grep -Fxv gcc-linaro-arm-linux-gnueabihf-raspbian | xargs sudo rm -r
+    cd ../../..
 fi
 
 # Create workspace
@@ -256,13 +263,22 @@ fi
 for REPO in "${GITHUB_REPOS[@]}" 
 do
     echo " $REPO"
-    if [ ! -d "$WORKSPACE_DIR/$REPO" ]; then
-        git clone https://github.com/plt-tud/$REPO.git workspace/$REPO
-        eclipse/eclipse -nosplash -data workspace -application org.eclipse.cdt.managedbuilder.core.headlessbuild -import $WORKSPACE_DIR/$REPO
-    else
-        git -C $WORKSPACE_DIR/$REPO pull
-    fi
+    
+    rm -r workspace/$REPO
+    git clone https://github.com/plt-tud/$REPO.git workspace/$REPO
 done
+
+# Create ssh configuration files
+if [ ! -f /home/mrt/.ssh/known_hosts ]; then
+	echo "Creating ~/.ssh/known_hosts"
+	mkdir -p /home/mrt/.ssh/
+	touch /home/mrt/.ssh/known_hosts
+fi
+
+echo "Changing permissions to rwx for group and user..."
+
+chmod -R 755 .
+chown -R mrt .
 
 echo " DONE"
 echo ""
